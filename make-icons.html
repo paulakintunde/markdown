@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate PWA Icons — Markdown Editor</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #1b1d2b; color: #cdd6f4;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 100vh; gap: 2rem; padding: 2rem;
+    }
+    h1 { font-size: 1.3rem; color: #89b4fa; margin: 0; letter-spacing: 1px; }
+    p  { color: #a6adc8; margin: 0; font-size: 0.9rem; text-align: center; max-width: 480px; line-height: 1.6; }
+    .cards { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+    .card {
+      background: #11131f; border: 1px solid #313244; border-radius: 10px;
+      padding: 1.5rem; display: flex; flex-direction: column;
+      align-items: center; gap: 1rem;
+    }
+    canvas { border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+    a.dl-btn {
+      display: inline-block; padding: 0.5rem 1.4rem;
+      border: 1px solid #89b4fa; color: #89b4fa;
+      border-radius: 5px; text-decoration: none;
+      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px;
+      transition: background 0.15s;
+    }
+    a.dl-btn:hover { background: #89b4fa22; }
+    .label { font-size: 0.78rem; color: #6c7086; letter-spacing: 1px; text-transform: uppercase; }
+    .steps {
+      background: #11131f; border: 1px solid #313244; border-radius: 10px;
+      padding: 1.2rem 1.8rem; max-width: 500px; font-size: 0.88rem;
+      line-height: 1.8; color: #a6adc8;
+    }
+    .steps strong { color: #cba6f7; }
+    code { background: #1e2030; padding: 0.1em 0.4em; border-radius: 3px; font-size: 0.82em; color: #f38ba8; }
+    ol { margin: 0.5rem 0 0 1.2rem; padding: 0; }
+  </style>
+</head>
+<body>
+  <h1>⬇ PWA Icon Generator</h1>
+  <p>Click the download links below to save the two PNG icons needed for the Markdown Editor PWA.</p>
+
+  <div class="cards" id="cards"></div>
+
+  <div class="steps">
+    <strong>After downloading:</strong>
+    <ol>
+      <li>Create an <code>icons/</code> folder next to <code>markdown-editor.html</code></li>
+      <li>Place both PNGs and the <code>icon.svg</code> inside <code>icons/</code></li>
+      <li>Push all files to GitHub — the PWA install prompt will appear automatically</li>
+    </ol>
+  </div>
+
+  <script>
+    function roundedRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+
+    function drawIcon(canvas) {
+      const s   = canvas.width;
+      const ctx = canvas.getContext('2d');
+      const r   = s * 0.1875; // corner radius ≈ 96/512
+
+      // ── Background ──────────────────────────────────────────────────────────
+      ctx.fillStyle = '#1b1d2b';
+      roundedRect(ctx, 0, 0, s, s, r);
+      ctx.fill();
+
+      // ── Diamond ◆ ──────────────────────────────────────────────────────────
+      const pad = s * 0.172; // 88/512
+      ctx.fillStyle = '#89b4fa';
+      ctx.beginPath();
+      ctx.moveTo(s * 0.5,       pad);         // top
+      ctx.lineTo(s - pad,       s * 0.5);     // right
+      ctx.lineTo(s * 0.5,       s - pad);     // bottom
+      ctx.lineTo(pad,           s * 0.5);     // left
+      ctx.closePath();
+      ctx.fill();
+
+      // ── M letter (cut-out in background colour) ─────────────────────────────
+      ctx.fillStyle = '#1b1d2b';
+      ctx.font = `900 ${Math.round(s * 0.344)}px 'Segoe UI', Arial, sans-serif`;
+      ctx.textAlign    = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('M', s * 0.5, s * 0.57);
+    }
+
+    const container = document.getElementById('cards');
+
+    [512, 192].forEach(size => {
+      const canvas    = document.createElement('canvas');
+      canvas.width    = size;
+      canvas.height   = size;
+      canvas.style.width  = Math.min(size, 160) + 'px';
+      canvas.style.height = Math.min(size, 160) + 'px';
+
+      drawIcon(canvas);
+
+      const link      = document.createElement('a');
+      link.className  = 'dl-btn';
+      link.textContent = `⬇ icon-${size}.png`;
+      link.download   = `icon-${size}.png`;
+      link.href       = canvas.toDataURL('image/png');
+
+      const label     = document.createElement('span');
+      label.className = 'label';
+      label.textContent = `${size} × ${size}`;
+
+      const card      = document.createElement('div');
+      card.className  = 'card';
+      card.append(label, canvas, link);
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>

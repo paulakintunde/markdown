@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Markdown Editor</title>
 
+  <!-- ── PWA ── -->
+  <meta name="theme-color" content="#89b4fa">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Markdown">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+
   <!--
     SECURITY NOTE — Subresource Integrity (SRI):
     All CDN tags below carry SRI integrity hashes (sha384) and crossorigin="anonymous".
@@ -2840,6 +2849,17 @@ console.log(greet('World'));
       document.getElementById('shortcuts-close-footer-btn').addEventListener('click', closeShortcuts);
     }
     wireHandlers();
+  </script>
+
+  <!-- ── PWA service worker registration ── -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(r => console.log('[SW] registered — scope:', r.scope))
+          .catch(e => console.warn('[SW] registration failed:', e));
+      });
+    }
   </script>
 </body>
 </html>

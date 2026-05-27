@@ -8,6 +8,7 @@
 ## Table of Contents
 
 - [Overview](#overview)
+- [Install as a PWA](#install-as-a-pwa)
 - [Getting Started](#getting-started)
 - [The Interface](#the-interface)
 - [Header Buttons](#header-buttons)
@@ -53,6 +54,100 @@
 - 📚 **Document Library** — named snapshots for version-like saves
 - 🎯 **Word count goal** with live progress bar
 - ♿ **Full accessibility** — ARIA labels, keyboard navigation, focus traps
+
+---
+
+## Install as a PWA
+
+The app supports installation as a **Progressive Web App** — it runs like a native app, works offline, and lives in your dock/taskbar/home screen.
+
+### Step 1 — Generate the icons (one time only)
+
+Open `make-icons.html` in your browser and click both download buttons:
+
+```
+make-icons.html   →   icons/icon-192.png   (download)
+                  →   icons/icon-512.png   (download)
+```
+
+Place both files in the `icons/` folder alongside `icon.svg`.
+
+### Step 2 — Deploy all files to GitHub
+
+Your repo root should look like this:
+
+```
+markdown/                     ← GitHub repo (served at /markdown/)
+├── index.html                ← your markdown-editor.html (rename to index.html)
+├── manifest.json             ← PWA manifest
+├── sw.js                     ← service worker
+├── icons/
+│   ├── icon.svg              ← vector source
+│   ├── icon-192.png          ← from make-icons.html
+│   └── icon-512.png          ← from make-icons.html
+└── make-icons.html           ← icon generator (optional to deploy)
+```
+
+Push to GitHub. GitHub Pages will serve the site at `https://paulakintunde.github.io/markdown/`.
+
+### Step 3 — Install on your device
+
+#### 🖥️ Desktop (Chrome / Edge)
+
+1. Visit `https://paulakintunde.github.io/markdown/`
+2. Look for the **install icon** (⊕) in the address bar on the right
+3. Click it → **Install**
+4. The app opens in its own window and appears in your Start menu / Applications
+
+> **Or:** Click the browser menu (⋮) → *Install Markdown Editor…*
+
+#### 📱 Android (Chrome)
+
+1. Visit the URL in Chrome
+2. A banner may appear at the bottom — tap **Add to Home Screen**
+3. If no banner: tap the browser menu (⋮) → *Add to Home Screen* → **Install**
+4. The icon appears on your home screen; it opens full-screen with no browser UI
+
+#### 🍎 iPhone / iPad (Safari)
+
+Safari does not show an install banner — use the Share sheet:
+
+1. Visit the URL in **Safari** (must be Safari, not Chrome on iOS)
+2. Tap the **Share** button (box with arrow pointing up)
+3. Scroll down → tap **Add to Home Screen**
+4. Tap **Add** — the icon appears on your home screen
+
+#### 🖥️ Desktop (Safari on macOS)
+
+1. Visit the URL in Safari
+2. **File menu → Add to Dock**
+3. The app appears in your Dock and opens as a standalone window
+
+---
+
+### How the offline mode works
+
+After the first visit online, the service worker caches:
+- The app HTML
+- All CDN libraries (Marked, Mermaid, KaTeX, DOMPurify)
+- Icons and manifest
+
+On subsequent visits — even with no internet — the app loads fully from cache. CodeMirror (loaded from esm.sh) is cached on first use and served from cache offline.
+
+Your documents are stored in **`localStorage`** on the device — they persist across offline sessions.
+
+---
+
+### Verifying the PWA is set up correctly
+
+Open Chrome DevTools → **Application** tab:
+
+| Check | Expected |
+|-------|----------|
+| Manifest | Name, icons, theme colour all shown |
+| Service Workers | Status: **activated and running** |
+| Cache Storage | `md-shell-v1`, `md-cdn-v1`, `md-runtime-v1` listed |
+| Lighthouse PWA audit | All green |
 
 ---
 

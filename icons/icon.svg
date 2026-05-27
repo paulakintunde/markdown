@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background (rounded square — maskable safe zone is inner 80%) -->
+  <rect width="512" height="512" rx="96" fill="#1b1d2b"/>
+  <!-- Diamond ◆ in app accent blue -->
+  <path d="M256 88 L424 256 L256 424 L88 256 Z" fill="#89b4fa"/>
+  <!-- Bold M cut out in background colour -->
+  <text
+    x="256" y="292"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+    font-size="176"
+    font-weight="900"
+    letter-spacing="-8"
+    fill="#1b1d2b">M</text>
+</svg>
