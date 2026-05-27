@@ -1,793 +1,615 @@
-# 📝 The Complete Markdown Guide
-> *Everything you need to know to write beautiful, powerful documents in Markdown*
+# ◆ Markdown Editor
+
+> A powerful, single-file Markdown editor — no install, no server, no dependencies to manage.  
+> Open `markdown-editor.html` in any modern browser and start writing.
 
 ---
 
 ## Table of Contents
 
-- [What is Markdown?](#what-is-markdown)
-- [Why Use Markdown?](#why-use-markdown)
-- [Headings](#headings)
-- [Text Formatting](#text-formatting)
-- [Lists](#lists)
-- [Links](#links)
-- [Images](#images)
-- [Code Blocks](#code-blocks)
-- [Tables](#tables)
-- [Blockquotes](#blockquotes)
-- [Horizontal Rules](#horizontal-rules)
-- [Task Lists / Checkboxes](#task-lists--checkboxes)
-- [Badges & Button-Style Links](#badges--button-style-links)
-- [Footnotes](#footnotes)
-- [Collapsible Sections](#collapsible-sections)
-- [Emoji](#emoji)
-- [Keyboard Keys](#keyboard-keys)
-- [Diff Highlighting](#diff-highlighting)
-- [Math & Diagrams](#math--diagrams)
-- [GitHub-Flavored Markdown (GFM)](#github-flavored-markdown-gfm)
-- [Tips & Best Practices](#tips--best-practices)
-- [Quick Reference Cheatsheet](#quick-reference-cheatsheet)
+- [Overview](#overview)
+- [Getting Started](#getting-started)
+- [The Interface](#the-interface)
+- [Header Buttons](#header-buttons)
+- [The More Menu](#the-more-menu)
+- [Formatting Toolbar](#formatting-toolbar)
+- [Multi-Tab System](#multi-tab-system)
+- [Live Preview](#live-preview)
+- [Find & Replace](#find--replace)
+- [Preview Search](#preview-search)
+- [Preview Modal](#preview-modal)
+- [Document Library](#document-library)
+- [Status Bar & Word Count Goal](#status-bar--word-count-goal)
+- [Zen Mode](#zen-mode)
+- [Drag & Drop Import](#drag--drop-import)
+- [Image Paste from Clipboard](#image-paste-from-clipboard)
+- [URL Sharing](#url-sharing)
+- [Table of Contents Generator](#table-of-contents-generator)
+- [Backup & Restore](#backup--restore)
+- [Mermaid Diagrams](#mermaid-diagrams)
+- [Math Rendering (KaTeX)](#math-rendering-katex)
+- [Code Blocks with Copy Button](#code-blocks-with-copy-button)
+- [Scroll Sync](#scroll-sync)
+- [Mobile Layout](#mobile-layout)
+- [Keyboard Shortcuts](#keyboard-shortcuts)
+- [Auto-Save](#auto-save)
+- [Security](#security)
+- [Browser Requirements](#browser-requirements)
 
 ---
 
-## What is Markdown?
+## Overview
 
-**Markdown** is a lightweight markup language created by John Gruber in 2004. It lets you write plain text that automatically converts into beautifully formatted HTML — no HTML knowledge required.
+**Markdown Editor** is a zero-dependency, self-contained HTML file that packs a professional writing environment into a single download. Every feature — from Mermaid diagram rendering to regex-powered Find & Replace — works offline in your browser.
 
-It's the language behind:
-- GitHub READMEs and wikis
-- Notion, Obsidian, and Bear notes
-- Reddit posts and comments
-- Stack Overflow answers
-- This very document you're reading!
+**What makes it special:**
 
----
-
-## Why Use Markdown?
-
-| Benefit | Description |
-|---|---|
-| 🚀 **Fast** | Write formatting in seconds without menus or toolbars |
-| 📦 **Portable** | Plain `.md` files work everywhere — no special software needed |
-| 🔁 **Version-controllable** | Git-friendly plain text — diff, merge, and track changes easily |
-| 🌍 **Universal** | Supported by GitHub, GitLab, VS Code, Notion, Discord, Slack, and hundreds of tools |
-| 👀 **Readable raw** | Even un-rendered Markdown is easy to read as plain text |
-| ⚡ **Future-proof** | No proprietary format — your files will open in 20 years |
+- 🗂️ **Multi-tab** document management (up to 20 tabs)
+- ⚡ **Live split-pane preview** with scroll synchronization
+- 📊 **Mermaid diagrams** rendered inline as SVG
+- ∑ **KaTeX math** for `$LaTeX$` formulas
+- 🔒 **DOMPurify XSS protection** — safe to preview untrusted content
+- 💾 **Auto-saves** to `localStorage` — survives browser refreshes
+- 📚 **Document Library** — named snapshots for version-like saves
+- 🎯 **Word count goal** with live progress bar
+- ♿ **Full accessibility** — ARIA labels, keyboard navigation, focus traps
 
 ---
 
-## Headings
+## Getting Started
 
-Use `#` symbols to create headings. More `#` symbols = smaller heading.
+1. Double-click `markdown-editor.html` to open it in your browser
+2. Start typing Markdown in the left pane — the right pane updates live
+3. Your work saves automatically to your browser's local storage
 
-```markdown
-# H1 — Page Title (largest)
-## H2 — Major Section
-### H3 — Subsection
-#### H4 — Sub-subsection
-##### H5 — Smaller still
-###### H6 — Smallest heading
+> **Offline use:** The editor loads CodeMirror and other libraries from CDN on first use. Once cached, it works offline. For a fully offline-ready build, self-host the CDN scripts (see comments in the HTML source).
+
+---
+
+## The Interface
+
 ```
-
-**Renders as:**
-
-# H1 — Page Title
-## H2 — Major Section
-### H3 — Subsection
-#### H4 — Sub-subsection
-##### H5 — Smaller still
-###### H6 — Smallest heading
-
-> 💡 **Tip:** Always put a space after the `#`. Leave a blank line before and after headings for best compatibility.
-
----
-
-## Text Formatting
-
-### Bold, Italic, Strikethrough, Highlight
-
-```markdown
-**bold text**
-__also bold__
-
-*italic text*
-_also italic_
-
-***bold and italic***
-
-~~strikethrough~~
-
-==highlighted text==        (some renderers only)
-
-`inline code`
-```
-
-**Renders as:**
-
-- **bold text**
-- *italic text*
-- ***bold and italic***
-- ~~strikethrough~~
-- `inline code`
-
-### Combining Styles
-
-```markdown
-You can **combine _styles_ like** this, and even ***mix `code` with bold***.
-```
-
-You can **combine _styles_ like** this, and even ***mix `code` with bold***.
-
-### Escaping Characters
-
-To show a literal `*` or `#`, escape it with a backslash:
-
-```markdown
-\*This won't be italic\*
-\# This won't be a heading
+┌─────────────────────────────────────────────────────────────────┐
+│  ◆ Markdown  │  ⊞ Zen  │ 👁 Preview │ ☀ Theme │ Export .md │ ⋯ │  ← Header
+├──────────────────────────────────────────────────────────────────┤
+│  [Tab 1]  [Tab 2]  [Tab 3 ×]  [+]                               │  ← Tab Bar
+├──────────────────────────────────────────────────────────────────┤
+│  B  I  S  </>  │  H1  H2  H3  │  • List  1.List  ☐ Task  " Quote│  ← Toolbar
+│  Code  Diagram  ∑ Math  🔗 Link  📷 Img  ⊞ Table  — HR  │  🔍 F&R│
+├──────────────────────────────────────────────────────────────────┤
+│                     │  │                                         │
+│  Markdown Editor    │  │  Live Preview                           │
+│  (CodeMirror 6)     │◄─┤  (rendered HTML)                       │
+│                     │  │                                         │
+│                     │  │  ← Drag divider to resize →            │
+├──────────────────────────────────────────────────────────────────┤
+│  Words: 0  Chars: 0  Lines: 0  Read time: 0 min  Goal: [___] ██ │  ← Status Bar
+└──────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Lists
+## Header Buttons
 
-### Unordered Lists
+| Button | Shortcut | What it does |
+|--------|----------|-------------|
+| **⊞ Zen** | `F11` | Hides toolbar, tabs, and preview — pure writing focus |
+| **👁 Preview** | `Ctrl+P` | Opens the document in a full-screen preview modal |
+| **☀ Theme** | — | Toggles preview between **light** and **dark** themes |
+| **Export .md** | — | Downloads the current tab as a `.md` file |
+| **⋯ More** | — | Opens a dropdown with additional options |
 
-```markdown
-- Apple
-- Banana
-- Cherry
-  - Sub-item (indent with 2 spaces)
-  - Another sub-item
-    - Even deeper
+---
+
+## The More Menu
+
+Click **⋯ More** in the header to access:
+
+| Menu Item | What it does |
+|-----------|-------------|
+| **🖨 Print** | Opens a clean print dialog (formatted, no editor chrome) |
+| **Export HTML** | Downloads the rendered preview as a standalone `.html` file with embedded CSS |
+| **📚 Docs** | Opens the Document Library for named snapshots |
+| **🔗 Share** | Encodes the document into a URL and copies it to clipboard |
+| **⊞ TOC at cursor** | Inserts a linked Table of Contents at the cursor position |
+| **⊞ TOC at top** | Inserts a Table of Contents at the very top of the document |
+| **✓ Spell** | Toggles browser spell check in the editor |
+| **💾 Backup** | Downloads all tabs as a JSON backup file |
+| **↩ Restore** | Restores tabs from a JSON backup file |
+| **? Keys** | Opens the keyboard shortcuts reference |
+| **Clear** *(red)* | Clears the current tab — requires two clicks to confirm |
+
+> 💡 **Two-click Clear:** The first click shows a warning toast; the second click actually clears. This prevents accidental data loss.
+
+---
+
+## Formatting Toolbar
+
+The toolbar wraps selected text or inserts at the cursor:
+
+### Text Formatting
+| Button | Output | Shortcut |
+|--------|--------|----------|
+| **B** | `**bold**` | `Ctrl+B` |
+| *I* | `*italic*` | `Ctrl+I` |
+| ~~S~~ | `~~strikethrough~~` | — |
+| `</>` | `` `inline code` `` | — |
+
+### Headings
+| Button | Output |
+|--------|--------|
+| **H1** | `# Heading` (toggles; click again to remove) |
+| **H2** | `## Heading` |
+| **H3** | `### Heading` |
+
+> Smart toggle: clicking H2 on an existing H3 line *replaces* the prefix, not stacks it.
+
+### Lists & Structure
+| Button | Output |
+|--------|--------|
+| **• List** | `- item` (toggle prefix on each selected line) |
+| **1. List** | `1. item` |
+| **☐ Task** | `- [ ] item` |
+| **" Quote** | `> blockquote` |
+
+### Insertions
+| Button | What inserts |
+|--------|-------------|
+| **Code** | Fenced code block ` ```\ncode\n``` ` |
+| **Diagram** | Starter Mermaid `graph LR` block |
+| **∑ Math** | `$$\n\n$$` display math block (or wraps selection in `$...$`) |
+| **🔗 Link** | `[link text](https://)` — URL placeholder auto-selected |
+| **📷 Img** | `![alt text](image-url)` — URL placeholder auto-selected |
+| **⊞ Table** | 3×2 starter table with headers |
+| **— HR** | `\n\n---\n\n` horizontal rule |
+| **🔍 F&R** | Opens Find & Replace panel (`Ctrl+H`) |
+
+### Sync indicator
+The **`sync`** pill on the right side of the toolbar flashes blue whenever scroll-sync fires between the editor and preview.
+
+---
+
+## Multi-Tab System
+
+Create and manage multiple documents simultaneously.
+
+### Tab bar controls
+
+| Action | How |
+|--------|-----|
+| **New tab** | Click **+** or press `Ctrl+T` |
+| **Switch tabs** | Click a tab, or use `←` / `→` arrow keys when a tab has focus |
+| **Close tab** | Click the **×** on the tab, press `Ctrl+W`, or press `Delete`/`Backspace` on a focused tab |
+| **Rename tab** | **Double-click** the tab title, type a new name, press `Enter` |
+| **Reopen closed tab** | `Ctrl+Shift+T` (last 5 closed tabs remembered) |
+
+**Limits:**
+- Maximum **20 tabs** open at once
+- Tab titles max **100 characters**
+- Closing the last tab clears it instead of removing it
+
+---
+
+## Live Preview
+
+The right pane renders your Markdown in real time using **Marked.js** (GFM mode) with:
+
+- ✅ Tables, strikethrough, task lists
+- ✅ Hard line breaks
+- ✅ Mermaid diagrams
+- ✅ KaTeX math
+- ✅ Syntax-highlighted code blocks
+- ✅ DOMPurify XSS sanitization before rendering
+
+The preview pane can be resized by **dragging the divider** between the two panes. Use `←` / `→` arrow keys on the divider for keyboard control (`Shift` for 5% steps). The split position is saved across sessions.
+
+---
+
+## Find & Replace
+
+Open with `Ctrl+H` or the **🔍 F&R** toolbar button.
+
+```
+┌─────────────────────────────────────────────┐
+│  🔍 Find & Replace                      [✕] │
+│  [  Search query...          ]   3 / 12      │
+│  [  Replacement text ($1$2…) ]               │
+│  [✓] Regex  [✓] Case   [↑] [↓] Replace  All │
+└─────────────────────────────────────────────┘
 ```
 
-- Apple
-- Banana
-- Cherry
-  - Sub-item
-  - Another sub-item
-    - Even deeper
+| Control | Function |
+|---------|----------|
+| **Find field** | Type to build match list — updates as you type |
+| **Match counter** | Shows `n / total` or `No matches` |
+| **↑ / ↓ buttons** | Navigate to previous / next match (wraps with toast notification) |
+| **Replace** | First click: jumps to first match. Second click: replaces and advances |
+| **All** | Replaces all matches at once — shows count in toast |
+| **Regex checkbox** | Enables full JavaScript regex (`$1`, `$2` capture groups in replacement) |
+| **Case checkbox** | Makes search case-sensitive |
 
-> You can also use `*` or `+` instead of `-` — they all work the same.
+> **Security:** Queries are capped at 200 characters and match count is capped at 5,000 to prevent ReDoS attacks via catastrophic backtracking.
 
-### Ordered Lists
+---
 
-```markdown
-1. First step
-2. Second step
-3. Third step
-   1. Sub-step A
-   2. Sub-step B
+## Preview Search
+
+Search **within the rendered preview** (not the raw Markdown source).
+
+- Open with `Ctrl+F` when focus is **outside** the editor (or `Ctrl+F` inside editor opens F&R instead)
+- Matches are highlighted in **yellow**; the current match is **orange**
+- Navigate with `Enter` (next) / `Shift+Enter` (previous)
+- Close with `Esc`
+
 ```
-
-1. First step
-2. Second step
-3. Third step
-   1. Sub-step A
-   2. Sub-step B
-
-> 💡 **Cool trick:** You can use `1.` for every item — Markdown auto-numbers them correctly! Great for lists you'll reorder later.
-
-```markdown
-1. Item one
-1. Item two
-1. Item three
-```
-
-### Definition Lists *(extended Markdown)*
-
-```markdown
-Apple
-:   A red fruit that grows on trees.
-
-Markdown
-:   A lightweight markup language for formatting text.
+│  [ Search preview…  ]  3 / 8  [↑] [↓] [✕]  │
 ```
 
 ---
 
-## Links
+## Preview Modal
 
-### Basic Links
+Press `Ctrl+P` or click **👁 Preview** to open a full-screen view of the rendered document.
 
-```markdown
-[Link text](https://example.com)
-[Link with title](https://example.com "Hover tooltip text")
-```
-
-[Visit GitHub](https://github.com)
-[Visit GitHub with tooltip](https://github.com "GitHub — where code lives")
-
-### Auto Links
-
-```markdown
-<https://example.com>
-<hello@example.com>
-```
-
-### Reference-Style Links
-
-Great for long documents — define URLs once, use them many times:
-
-```markdown
-I love [GitHub][gh] and [Stack Overflow][so].
-
-[gh]: https://github.com
-[so]: https://stackoverflow.com
-```
-
-### Anchor Links (Jump to Section)
-
-```markdown
-[Jump to the Table of Contents](#table-of-contents)
-```
-
-> Headings automatically become anchors. Replace spaces with `-` and lowercase everything.
+The modal has its own action buttons:
+- **🖨 Print** — clean print stylesheet, no editor chrome
+- **Export HTML** — standalone HTML file with embedded styles
+- **Export .md** — raw Markdown file
+- **✕ Close** — `Esc`
 
 ---
 
-## Images
+## Document Library
 
-Images work just like links, but with a `!` prefix:
+Open via **⋯ More → 📚 Docs**. Save named snapshots of any document — useful for versioning, checkpoints, or comparing drafts.
 
-```markdown
-![Alt text](image-url.png)
-![Alt text](image-url.png "Optional title")
+### Saving a snapshot
+1. Type a name in the **Snapshot name** field (defaults to the current tab title)
+2. Click **💾 Save snapshot**
+
+Each snapshot records:
+- Document name
+- Full content
+- Word count & character count
+- Date/time saved
+
+### Using snapshots
+| Action | Button |
+|--------|--------|
+| **Load** | Replaces current tab content (confirms if tab has content) |
+| **Delete** | **✕** — asks for confirmation |
+
+**Limits:** Maximum 50 snapshots. Adding a 51st removes the oldest automatically.
+
+---
+
+## Status Bar & Word Count Goal
+
+The blue bar at the bottom shows live document statistics:
+
+```
+Words: 248   Chars: 1,423   Lines: 38   Read time: 2 min   Goal: [500] ████░░░░  49%
 ```
 
-### Image with Link
+| Stat | How it's calculated |
+|------|---------------------|
+| **Words** | Smart count — strips code blocks, headings `#`, markdown syntax, and table separators |
+| **Chars** | Raw character count including whitespace |
+| **Lines** | Line count from CodeMirror |
+| **Read time** | `⌈words ÷ 200⌉` minutes (200 wpm average) |
 
-Wrap an image in a link to make it clickable:
+### Word Count Goal
+Set a target word count in the **Goal** field at the right of the status bar:
+- Progress bar fills as you write
+- Turns **dark green** when the goal is reached
+- Turns **purple** when you've exceeded the goal
+- Shows `+n` words over goal when exceeded
+- Goal is persisted across sessions
 
+---
+
+## Zen Mode
+
+Press **F11** or click **⊞ Zen** to enter distraction-free writing:
+
+- ✅ Toolbar hidden
+- ✅ Tab bar hidden
+- ✅ Preview pane hidden
+- ✅ Header becomes semi-transparent
+- ✅ Pane labels fade out
+
+Press **F11** again or click **✕ Exit Zen** to return to the normal layout.
+
+---
+
+## Drag & Drop Import
+
+Drag any `.md`, `.markdown`, or `.txt` file onto the **editor pane** to import it:
+
+- The file content replaces the current tab
+- The tab title is set to the filename (without extension)
+- Maximum file size: **2 MB**
+
+A dashed outline appears on the editor when a valid file is dragged over it.
+
+---
+
+## Image Paste from Clipboard
+
+Paste an image directly from the clipboard (`Ctrl+V`) while the editor is focused:
+
+- The image is converted to a **base64 data URL** and inserted as `![image](data:...)`
+- Maximum image size: **2 MB** (larger images must be hosted externally)
+- A toast warns about storage inflation for large images
+
+### Smart URL paste
+If you have text **selected** and paste a URL (`https://...`), it auto-formats as:
 ```markdown
-[![Alt text](image.png)](https://example.com)
-```
-
-### Controlling Image Size *(HTML inline)*
-
-Pure Markdown doesn't support sizing, but HTML works inside Markdown:
-
-```html
-<img src="image.png" alt="Alt text" width="300" height="200">
-```
-
-### Reference-Style Images
-
-```markdown
-![Logo][logo]
-
-[logo]: https://example.com/logo.png "Company Logo"
+[selected text](https://your-url)
 ```
 
 ---
 
-## Code Blocks
+## URL Sharing
 
-### Inline Code
+Via **⋯ More → 🔗 Share**:
 
+1. The current document is **base64-encoded** into the URL hash
+2. The full shareable URL is **copied to clipboard**
+3. Paste the URL and anyone with the link can open it in their browser
+4. On load, a prompt asks "Load shared document into a new tab?"
+
+> **Note:** Very long documents produce very long URLs (some apps truncate at ~8,000 characters). A toast warns you if the URL exceeds this.
+
+---
+
+## Table of Contents Generator
+
+Via **⋯ More → TOC at cursor** or **TOC at top**:
+
+- Scans all headings (`#` through `######`) in the document
+- Skips headings inside fenced code blocks
+- Generates a nested list of anchor links matching GitHub's GFM slug algorithm
+- Handles **duplicate heading names** by appending `-1`, `-2`, etc.
+
+**Example output:**
 ```markdown
-Use the `print()` function to output text.
-Run `npm install` to install dependencies.
+**Table of Contents**
+
+- [Introduction](#introduction)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
+- [API Reference](#api-reference)
 ```
 
-Use the `print()` function to output text.
+---
 
-### Fenced Code Blocks
+## Backup & Restore
 
-Wrap code in triple backticks. Add a language name for **syntax highlighting**:
+### Backup
+**⋯ More → 💾 Backup** — downloads a `markdown-backup.json` file containing:
+- All open tabs (titles + full content)
+- Which tab was active
+- Export timestamp
+
+### Restore
+**⋯ More → ↩ Restore** — opens a file picker for a `.json` backup file:
+- Validates the file structure before restoring
+- Confirms before replacing current tabs
+- Enforces the 20-tab maximum
+
+---
+
+## Mermaid Diagrams
+
+Write a fenced code block with `mermaid` as the language:
 
 ````markdown
-```python
-def greet(name):
-    print(f"Hello, {name}!")
-
-greet("World")
+```mermaid
+graph LR
+    A[Write Markdown] --> B{Preview}
+    B -->|looks good| C[Export]
+    B -->|needs edits| A
 ```
 ````
 
-```python
-def greet(name):
-    print(f"Hello, {name}!")
+The diagram renders as an **SVG** directly in the preview. Supported diagram types include:
 
-greet("World")
-```
+| Type | Syntax |
+|------|--------|
+| Flowchart | `graph TD` / `graph LR` |
+| Sequence diagram | `sequenceDiagram` |
+| Gantt chart | `gantt` |
+| Pie chart | `pie` |
+| Class diagram | `classDiagram` |
+| State diagram | `stateDiagram-v2` |
+| Entity relationship | `erDiagram` |
 
-### Popular Language Tags
+If the diagram has a syntax error, a red error block shows the message instead.
 
-| Tag | Language |
-|---|---|
-| `python` | Python |
-| `javascript` or `js` | JavaScript |
-| `typescript` or `ts` | TypeScript |
-| `bash` or `sh` | Shell / Bash |
-| `json` | JSON |
-| `yaml` | YAML |
-| `html` | HTML |
-| `css` | CSS |
-| `sql` | SQL |
-| `rust` | Rust |
-| `go` | Go |
-| `markdown` or `md` | Markdown itself |
-
-### Indented Code Block (old-style)
-
-4 spaces of indentation also creates a code block:
-
-```markdown
-    This is a code block
-    created with 4 spaces
-```
+**Performance:** Identical diagram source is cached — re-rendering won't hit Mermaid unless the code changes.
 
 ---
 
-## Tables
+## Math Rendering (KaTeX)
 
-```markdown
-| Column 1     | Column 2     | Column 3     |
-|--------------|--------------|--------------|
-| Cell A1      | Cell B1      | Cell C1      |
-| Cell A2      | Cell B2      | Cell C2      |
+Write math using LaTeX syntax:
+
+**Inline math** — wrap in single `$...$`:
+```
+The energy formula is $E = mc^2$.
 ```
 
-| Column 1 | Column 2 | Column 3 |
-|----------|----------|----------|
-| Cell A1 | Cell B1 | Cell C1 |
-| Cell A2 | Cell B2 | Cell C2 |
-
-### Column Alignment
-
-```markdown
-| Left-aligned | Center-aligned | Right-aligned |
-|:-------------|:--------------:|--------------:|
-| Left         | Center         | Right         |
-| text         | text           | text          |
+**Display math** — wrap in `$$...$$` on its own lines:
 ```
-
-| Left-aligned | Center-aligned | Right-aligned |
-|:-------------|:--------------:|--------------:|
-| Left | Center | Right |
-| text | text | text |
-
-> 💡 **Tip:** You don't need to align the pipes — they just need to be present. VS Code's "Markdown All in One" extension can auto-format tables with `Alt+Shift+F`.
-
----
-
-## Blockquotes
-
-```markdown
-> This is a blockquote.
-
-> You can have **formatted text** inside quotes.
->
-> And multiple paragraphs by adding a `>` on blank lines.
-
-> Nested quote:
->> This is nested inside the first quote.
->>> And this is even deeper.
-```
-
-> This is a blockquote.
-
-> You can have **formatted text** inside quotes.
->
-> And multiple paragraphs by adding a `>` on blank lines.
-
-> Nested quote:
->> This is nested inside the first quote.
->>> And this is even deeper.
-
-### Callout-Style Blockquotes *(GitHub)*
-
-GitHub supports special callout syntax:
-
-```markdown
-> [!NOTE]
-> Highlights information that users should take into account.
-
-> [!TIP]
-> Optional information to help a user be more successful.
-
-> [!IMPORTANT]
-> Crucial information necessary for users to succeed.
-
-> [!WARNING]
-> Critical content demanding immediate user attention.
-
-> [!CAUTION]
-> Negative potential consequences of an action.
-```
-
-> [!NOTE]
-> Highlights information that users should take into account.
-
-> [!TIP]
-> Optional information to help a user be more successful.
-
-> [!WARNING]
-> Critical content demanding immediate user attention.
-
----
-
-## Horizontal Rules
-
-Three or more dashes, asterisks, or underscores create a divider line:
-
-```markdown
----
-***
-___
-```
-
-All three render as:
-
----
-
-> 💡 Put blank lines before and after to avoid accidentally creating a heading.
-
----
-
-## Task Lists / Checkboxes
-
-One of the most useful GitHub Markdown features — interactive checkboxes!
-
-```markdown
-## Shopping List
-
-- [x] Milk
-- [x] Eggs
-- [ ] Bread
-- [ ] Coffee
-- [ ] Cheese
-
-## Project Tasks
-
-- [x] Set up repository
-- [x] Write README
-- [ ] Add tests
-- [ ] Deploy to production
-```
-
-**Renders as interactive checkboxes on GitHub:**
-
-- [x] Milk
-- [x] Eggs
-- [ ] Bread
-- [ ] Coffee
-
-> 🎉 **Cool feature:** On GitHub Issues and Pull Requests, these checkboxes are **clickable** — team members can check off tasks in real time without editing the raw Markdown!
-
----
-
-## Badges & Button-Style Links
-
-Badges are image-links that look like colorful buttons. They're everywhere on GitHub READMEs!
-
-### Using shields.io
-
-```markdown
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
-```
-
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
-
-### Clickable Badge Buttons
-
-Wrap badges in links to make them act like buttons:
-
-```markdown
-[![GitHub Stars](https://img.shields.io/github/stars/username/repo)](https://github.com/username/repo)
-[![Open in VS Code](https://img.shields.io/badge/Open%20in-VS%20Code-blue?logo=visualstudiocode)](https://vscode.dev)
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new)
-```
-
-### Common Badge Patterns
-
-```markdown
-<!-- Language badges -->
-![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES2024-yellow?logo=javascript)
-
-<!-- Status badges -->
-![Status](https://img.shields.io/badge/status-active-success)
-![Maintenance](https://img.shields.io/badge/maintained-yes-green)
-
-<!-- Social badges -->
-![Twitter Follow](https://img.shields.io/twitter/follow/username?style=social)
-![GitHub followers](https://img.shields.io/github/followers/username?style=social)
-```
-
-### Custom Color Options
-
-| Color Name | Hex | Appearance |
-|---|---|---|
-| `brightgreen` | #4c1 | Success/passing |
-| `green` | #97CA00 | Good |
-| `yellowgreen` | #a4a61d | Acceptable |
-| `yellow` | #dfb317 | Warning |
-| `orange` | #fe7d37 | Concern |
-| `red` | #e05d44 | Failure/error |
-| `blue` | #007ec6 | Info/version |
-| `lightgrey` | #9f9f9f | Inactive |
-
----
-
-## Footnotes
-
-Add footnotes for references without cluttering your text:
-
-```markdown
-Here is a sentence with a footnote.[^1]
-
-This uses a named footnote.[^note]
-
-[^1]: This is the footnote content. It appears at the bottom.
-[^note]: Named footnotes are easier to manage in long documents.
-```
-
-Here is a sentence with a footnote.[^1]
-
-[^1]: This is the footnote content at the bottom of the document.
-
----
-
-## Collapsible Sections
-
-Use HTML `<details>` tags inside Markdown for expandable sections:
-
-```markdown
-<details>
-<summary>Click to expand this section</summary>
-
-### Hidden Content
-
-This content is hidden by default and reveals on click.
-
-- You can put any Markdown here
-- Lists, code blocks, images — everything works!
-
-```python
-print("Even code blocks work inside details!")
-```
-
-</details>
-```
-
-<details>
-<summary>Click to expand this section</summary>
-
-### Hidden Content
-
-This content is hidden by default and reveals on click.
-
-- You can put any Markdown here
-- Lists, code blocks, images — everything works!
-
-</details>
-
-> 💡 **Great use case:** Long configuration examples, spoilers, optional reading sections, or long changelogs.
-
----
-
-## Emoji
-
-Use emoji shortcodes (supported on GitHub, Slack, Notion, and most modern renderers):
-
-```markdown
-:rocket: :star: :fire: :white_check_mark: :x: :warning: :bulb:
-:heart: :thumbsup: :thumbsdown: :eyes: :100: :tada: :zap:
-```
-
-🚀 ⭐ 🔥 ✅ ❌ ⚠️ 💡 ❤️ 👍 👎 👀 💯 🎉 ⚡
-
-You can also paste emoji directly: 🎨 🛠️ 📦 🔒 🌐
-
-> Find all GitHub emoji shortcodes at [emoji.muan.co](https://emoji.muan.co)
-
----
-
-## Keyboard Keys
-
-The `<kbd>` HTML tag renders keyboard shortcuts beautifully:
-
-```markdown
-Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy.
-Press <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> to open the command palette.
-Save with <kbd>Ctrl</kbd> + <kbd>S</kbd>.
-```
-
-Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy.
-Press <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> to open the command palette.
-
----
-
-## Diff Highlighting
-
-Use the `diff` language tag to show code changes with color:
-
-````markdown
-```diff
-- const greeting = "Hello";
-+ const greeting = "Hello, World!";
-  console.log(greeting);
-```
-````
-
-```diff
-- const greeting = "Hello";
-+ const greeting = "Hello, World!";
-  console.log(greeting);
-```
-
-Lines starting with `-` turn **red**, lines with `+` turn **green**.
-
----
-
-## Math & Diagrams
-
-### Math (LaTeX) — GitHub & many note apps
-
-```markdown
-Inline math: $E = mc^2$
-
-Block math:
 $$
-\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x)
+\frac{d}{dx}\left( \int_a^x f(u)\,du \right) = f(x)
 $$
 ```
 
-### Mermaid Diagrams — GitHub Native
+**Standard LaTeX delimiters** also work:
+- `\(...\)` for inline
+- `\[...\]` for display
 
-GitHub renders [Mermaid](https://mermaid.js.org/) diagrams directly:
+Click **∑ Math** in the toolbar to insert a display math block (or wrap selected text in inline `$...$`).
+
+---
+
+## Code Blocks with Copy Button
+
+Code blocks in the preview get an automatic **Copy** button that appears on hover:
 
 ````markdown
-```mermaid
-graph TD
-    A[Start] --> B{Is it working?}
-    B -->|Yes| C[Great!]
-    B -->|No| D[Debug it]
-    D --> B
+```javascript
+function greet(name) {
+  return `Hello, ${name}!`;
+}
 ```
 ````
 
-```mermaid
-graph TD
-    A[Start] --> B{Is it working?}
-    B -->|Yes| C[Great!]
-    B -->|No| D[Debug it]
-    D --> B
-```
-
-**Other Mermaid diagram types:**
-
-````markdown
-```mermaid
-sequenceDiagram
-    Alice->>Bob: Hello Bob!
-    Bob-->>Alice: Hi Alice!
-```
-````
-
-````markdown
-```mermaid
-pie title Browser Market Share
-    "Chrome" : 65
-    "Firefox" : 10
-    "Safari" : 19
-    "Other" : 6
-```
-````
+- Hover over any code block → **Copy** button appears (top-right corner)
+- Click to copy → button changes to **Copied!** for 1.6 seconds
+- Works in both the split preview and the Preview Modal
 
 ---
 
-## GitHub-Flavored Markdown (GFM)
+## Scroll Sync
 
-GitHub extends standard Markdown with powerful extras:
+The editor and preview scroll together automatically:
 
-### Auto-linking
+- Scroll in the **editor** → preview follows proportionally
+- Scroll in the **preview** → editor follows proportionally
+- The **`sync`** indicator in the toolbar flashes blue when sync fires
 
-GitHub auto-links:
-- Issue references: `#123` → links to issue 123
-- PR references: `#456` → links to pull request 456
-- @mentions: `@username` → links to a GitHub user
-- Commit SHAs: `abc1234` → links to that commit
-- URLs: `https://example.com` → auto-linked without brackets
-
-### Repository Cross-references
-
-```markdown
-username/repo#123           — issue in another repo
-username/repo@abc1234       — commit in another repo
-```
-
-### Code Permalink Highlighting
-
-On GitHub, select lines in a file and press **Y** to get a permanent link that highlights those exact lines:
-
-```
-https://github.com/user/repo/blob/abc123/src/file.js#L42-L51
-```
+Scroll sync uses a lock mechanism to prevent feedback loops.
 
 ---
 
-## Tips & Best Practices
+## Mobile Layout
 
-### ✅ Do
+On screens **≤ 768px**, the layout switches to a stacked single-pane view:
 
-- **Use blank lines** generously — they separate paragraphs and prevent rendering surprises
-- **Indent consistently** — 2 or 4 spaces for nested lists (pick one and stick with it)
-- **Keep line length reasonable** — ~80–120 chars for readability in raw view
-- **Use reference links** for URLs that appear multiple times
-- **Name your anchors** — descriptive headings create clean, shareable anchor links
-- **Preview as you write** — VS Code has built-in Markdown preview (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>)
-
-### ❌ Avoid
-
-- Mixing `*` and `-` for list bullets in the same document
-- Putting heading `#` symbols without a space: `#Heading` (broken in some parsers)
-- Relying on renderer-specific features without a fallback
-- Giant unbroken walls of text — use headings and lists!
-
-### 🛠️ Recommended Tools
-
-| Tool | Use Case |
-|---|---|
-| **VS Code** | Best desktop Markdown editor with live preview |
-| **Typora** | WYSIWYG Markdown editor |
-| **Obsidian** | Personal knowledge base with linked notes |
-| **HackMD / CodiMD** | Real-time collaborative Markdown |
-| **Pandoc** | Convert Markdown to PDF, Word, HTML, etc. |
-| **shields.io** | Generate badge SVGs |
-| **Tables Generator** | Visual table builder → [tablesgenerator.com](https://www.tablesgenerator.com/markdown_tables) |
-| **Mermaid Live** | Visual diagram editor → [mermaid.live](https://mermaid.live) |
+- A **✏ Editor / 👁 Preview** tab strip appears below the header
+- The divider is hidden
+- Both panes are full-width — switch between them with the tab strip
+- The toolbar expands to two rows if needed
 
 ---
 
-## Quick Reference Cheatsheet
+## Keyboard Shortcuts
 
-```
-HEADINGS          TEXT              LISTS
-# H1              **bold**          - unordered
-## H2             *italic*          1. ordered
-### H3            ~~strike~~        - [x] task done
-#### H4           `code`            - [ ] task todo
-                  ***bold italic***
+Press **`?`** (outside the editor) to open the full shortcuts reference modal.
 
-LINKS & IMAGES    CODE              TABLES
-[text](url)       `inline`          | A | B |
-![alt](url)       ```               |---|---|
-[ref][id]         block             | 1 | 2 |
-[id]: url         ```
+### Navigation
+| Shortcut | Action |
+|----------|--------|
+| `Ctrl+P` | Open preview modal |
+| `Ctrl+H` | Open Find & Replace |
+| `Ctrl+T` | New tab |
+| `Ctrl+W` | Close active tab |
+| `Ctrl+Shift+T` | Reopen last closed tab |
+| `F11` | Toggle Zen mode |
+| `Esc` | Close any open modal/panel |
+| `Ctrl+F` | F&R (editor focused) / Preview search (elsewhere) |
+| `?` | Open keyboard shortcuts reference |
 
-BLOCKQUOTE        HR                MISC
-> quote           ---               <details>
->> nested         ***               <summary>
-> [!NOTE]         ___               [^footnote]
-> callout                           :emoji:
-                                    <kbd>Key</kbd>
-```
+### Editor Formatting
+| Shortcut | Action |
+|----------|--------|
+| `Ctrl+B` | Bold |
+| `Ctrl+I` | Italic |
+| `Ctrl+K` | Insert link |
+| `Ctrl+Z` | Undo |
+| `Ctrl+Shift+Z` | Redo |
+
+### Tab Bar (when tab button has focus)
+| Key | Action |
+|-----|--------|
+| `←` / `→` | Switch to previous/next tab |
+| `Home` / `End` | Jump to first/last tab |
+| `Delete` / `Backspace` | Close active tab |
+
+### Find & Replace Panel
+| Key | Action |
+|-----|--------|
+| `Enter` (in Find field) | Find next |
+| `Enter` (in Replace field) | Replace current match |
+
+### Preview Search
+| Key | Action |
+|-----|--------|
+| `Enter` | Next match |
+| `Shift+Enter` | Previous match |
+| `Esc` | Close |
+
+### Other
+| Action | How |
+|--------|-----|
+| Import `.md` file | Drag & drop onto editor |
+| Paste image | `Ctrl+V` with image in clipboard |
+| Paste URL as link | Select text, then `Ctrl+V` a URL |
+| Double-click tab title | Rename tab |
 
 ---
 
-## File Extensions
+## Auto-Save
 
-Markdown files use these extensions:
+Every change is **automatically saved** to `localStorage` with a 400ms debounce:
 
-| Extension | Use |
-|---|---|
-| `.md` | Standard — used everywhere |
-| `.markdown` | Explicit/verbose form |
-| `.mdx` | Markdown + JSX (React components) |
-| `.mdwn` | Used by some wikis |
+- A **✓ Saved** badge fades in/out after each save
+- Saves include: all tab titles, all tab content, the active tab ID
+- The word count goal and pane split position are also persisted
+- If storage is full, a toast error prompts you to export your work
+
+Content persists across browser refreshes, closed tabs, and computer restarts — as long as you use the same browser profile and don't clear site data.
 
 ---
 
-*Last updated: May 2026 · Written in Markdown, naturally* 🎉
+## Security
 
-[![Made with Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](https://daringfireball.net/projects/markdown/)
+The editor is built with several security layers:
+
+| Protection | Detail |
+|------------|--------|
+| **DOMPurify** | All rendered HTML is sanitized before insertion — blocks XSS via crafted Markdown |
+| **Blocked HTML tags** | `<script>`, `<style>`, `<iframe>`, `<object>`, `<embed>`, `<form>`, `<base>` and more are stripped |
+| **Blocked attributes** | All `on*` event handlers (`onclick`, `onerror`, `onload`, etc.) are removed |
+| **SVG sanitization** | Mermaid SVG output is sanitized — `foreignObject` and `xlink:href` are blocked |
+| **SRI hashes** | All CDN resources use Subresource Integrity hashes — tampering is detected by the browser |
+| **ReDoS guards** | Find & Replace and Preview Search cap query length at 200 chars and match count at 5,000 |
+| **No inline event handlers** | All JS is in a single ES module — no `onclick=""` attributes anywhere |
+| **Safe localStorage** | Quota errors are caught and surfaced as toasts instead of silent data loss |
+
+---
+
+## Browser Requirements
+
+| Browser | Minimum Version |
+|---------|----------------|
+| Chrome / Edge | 61+ |
+| Firefox | 60+ |
+| Safari | 10.1+ |
+
+Requires **JavaScript enabled** and **ES module support**.
+
+If JavaScript is disabled, a `<noscript>` message is shown.  
+If the browser doesn't support ES modules (very old browsers), a legacy fallback message replaces the editor.  
+If the CDN is unreachable, a retry screen is shown with a **Retry** button.
+
+---
+
+## File Details
+
+| Property | Value |
+|----------|-------|
+| **File** | `markdown-editor.html` |
+| **Size** | Single `.html` file, ~2,800 lines |
+| **External deps** | CodeMirror 6, Marked.js, Mermaid.js, KaTeX, DOMPurify (all CDN-loaded, SRI-pinned) |
+| **Local storage keys** | `md-tabs-v1`, `md-active-v1`, `md-preview-theme`, `md-wc-goal`, `md-doc-library`, `md-pane-split`, `md-spell-check` |
+| **No server required** | ✅ Works as a local file (`file://`) |
+| **No account required** | ✅ Everything stays in your browser |
+
+---
+
+*Open `markdown-editor.html` — start writing.* ✍️
